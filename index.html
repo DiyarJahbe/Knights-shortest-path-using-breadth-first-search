@@ -39,11 +39,12 @@
         transition: background 0.3s;
         font-size: 30px;
       }
+      /* Realistic chessboard colors */
       .cell:nth-child(even) {
-        background-color: #95a5a6;
+        background-color: #c29a6a; /* Light wood color */
       }
       .cell:nth-child(odd) {
-        background-color: #7f8c8d;
+        background-color: #6f4f37; /* Dark wood color */
       }
       .selected {
         background-color: #f1c40f !important;
@@ -69,6 +70,11 @@
       #result {
         margin-top: 10px;
         font-size: 18px;
+      }
+
+      .knight {
+        font-size: 40px;
+        color: white; /* Knight color changed to white */
       }
     </style>
   </head>
@@ -108,8 +114,8 @@
               .querySelectorAll(".cell")
               .forEach((c) => (c.innerHTML = ""));
 
-            // Add knight emoji
-            cell.innerHTML = "♞";
+            // Add knight with class for color change
+            cell.innerHTML = "<span class='knight'>♞</span>";
           }
         } else {
           alert("Only two positions can be selected.");
@@ -130,7 +136,7 @@
               `.cell[data-x='${step.x}'][data-y='${step.y}']`
             );
             if (cell) {
-              cell.innerHTML = "♞";
+              cell.innerHTML = "<span class='knight'>♞</span>";
             }
             i++;
             setTimeout(moveKnight, 500); // Move every 500ms
